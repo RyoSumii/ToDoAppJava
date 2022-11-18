@@ -37,14 +37,22 @@
         <%
             if (processed == 0){
         %>
-        <p><strong>・</strong> <%=todo%> <%=timeLimit%>
-        <button type="submit" value="<%=id%>" name="markAsProcessed">完了</button>
-        <button type="submit" value="<%=id%>" name="deleteToDoID">削除</button></p>
+        <ul>
+            <li>
+                 <%=todo%>  <%=timeLimit%>
+                <button type="submit" value="<%=id%>" name="markAsProcessed">完了</button>
+                <button type="submit" value="<%=id%>" name="deleteToDoID">削除</button>
+            </li>
+        </ul>
         <%
             } else {
         %>
-            <p><strong>・</strong><del> <%=todo%> <%=timeLimit%></del>
-            <button type="submit" value="<%=id%>" name="deleteToDoID">削除</button></p>
+        <ul>
+            <li>
+                <del><%=todo%>  <%=timeLimit%></del>
+                <button type="submit" value="<%=id%>" name="deleteToDoID">削除</button>
+            </li>
+        </ul>
         <%
             }
         %>
