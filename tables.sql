@@ -11,5 +11,5 @@ create table things (
 create table users (
     id serial not null,
     name varchar not null,
-    primary key (id),
+    primary key (id)
 )
