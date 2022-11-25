@@ -93,4 +93,30 @@ public class ThingsDAO {
         }
     }
 
+    public Things findToDoByID(int thingID) {
+        Things things = null;
+        try (Connection conn = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASS)) {
+            String sql = "SELECT * from things WHERE id = ?";
+            PreparedStatement pStmt = conn.prepareStatement(sql);
+            pStmt.setInt(1, thingID);
+
+            ResultSet rs = pStmt.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                int user_id = rs.getInt("user_id");
+                String thing = rs.getString("thing");
+                String timeLimit = rs.getString("timelimit");
+                int processed = rs.getInt("processed");
+
+                Things toDoInfo = new Things(id, user_id, thing, timeLimit, processed);
+                return toDoInfo;
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return things;
+    }
+
 }

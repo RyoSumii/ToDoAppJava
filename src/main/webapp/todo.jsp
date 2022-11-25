@@ -1,6 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" language="java" %>
 <%@page import="model.Users, model.ThingsDAO" %>
-<%@ page import="java.sql.ResultSet" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="model.Things" %>
 <%
@@ -33,42 +32,42 @@
             String timeLimit = thing.getTimeLimit();
             int processed = thing.getProcessed();
     %>
-    <form action="/ToDoPage" method="post">
-        <%
-            if (processed == 0){
-        %>
-        <ul>
-            <li>
-                 <%=todo%>  <%=timeLimit%>
-                <button type="submit" value="<%=id%>" name="markAsProcessed">完了</button>
-                <button type="submit" value="<%=id%>" name="deleteToDoID">削除</button>
-            </li>
-        </ul>
-        <%
-            } else {
-        %>
-        <ul>
-            <li>
-                <del><%=todo%>  <%=timeLimit%></del>
-                <button type="submit" value="<%=id%>" name="deleteToDoID">削除</button>
-            </li>
-        </ul>
-        <%
-            }
-        %>
+    <div>
+        <form action="/ToDoPage" method="post" style="display: inline-block;">
+            <%
+                if (processed == 0){
+            %>
+            <ul>
+                <li>
+                     <%=todo%>  <%=timeLimit%>
+                    <button type="submit" value="<%=id%>" name="markAsProcessed">完了</button>
+                    <button type="submit" value="<%=id%>" name="deleteToDoID">削除</button>
+                </li>
+            </ul>
+        </form>
+        <form action="/ToDoPage" method="get" style="display: inline-block;">
+            <button type="submit" value="<%=id%>" name="updateID">更新</button>
+        </form>
+            <%
+                } else {
+            %>
+        <form action="/ToDoPage" method="post">
+            <ul>
+                <li>
+                    <del><%=todo%>  <%=timeLimit%></del>
+                    <button type="submit" value="<%=id%>" name="deleteToDoID">削除</button>
+                </li>
+            </ul>
+            <%
+                }
+            %>
 
-    </form>
-
+        </form>
+    </div>
 
     <%
         }
     %>
-
-<%--<script>--%>
-<%--    function deleteToDo(id) {--%>
-<%--        let id = <%%>--%>
-<%--    }--%>
-<%--</script>--%>
 
 <a href="/">戻る</a>
 </body>

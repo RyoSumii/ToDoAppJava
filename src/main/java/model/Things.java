@@ -24,5 +24,4 @@ public class Things {
     public String getTimeLimit() {return timeLimit;}
     public int getProcessed() {return processed;}
 
-    public void setProcessed() {this.processed = 1;}
 }
