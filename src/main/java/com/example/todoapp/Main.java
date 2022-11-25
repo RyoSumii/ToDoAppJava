@@ -30,12 +30,6 @@ public class Main extends HttpServlet{
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
         }
-//        UsersDAO usersDAO = new UsersDAO();
-//        Users user = usersDAO.checkUserExist(userName);
-//        HttpSession session = request.getSession();
-//        session.setAttribute("user", user);
-
-
 
         //ToDoをデータベースに登録
         ThingsDAO thingsDAO = new ThingsDAO();
