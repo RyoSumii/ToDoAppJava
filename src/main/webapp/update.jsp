@@ -3,17 +3,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%
-    Users user = (Users) session.getAttribute("user");
     Things thing = (Things) application.getAttribute("thing");
-    String todo = thing.getThing();
-    String deadLine = thing.getTimeLimit();
-
 %>
 <html>
 <head>
     <title>Title</title>
 </head>
 <body>
+<h1>Update Page</h1>
 <form action="/ToDoPage" method="post">
     <input type="hidden" value="<%=thing.getId()%>" name="thing_id">
     内容 <input  value="<%=thing.getThing()%>" name="updateToDo" required>
