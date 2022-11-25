@@ -21,7 +21,7 @@
         <input type="hidden" value="<%=user.getName()%>" name="user_name">
         <input type="hidden" value="<%=user.getId()%>" name="user_id">
         内容 <input name="todo" required>
-        期日 <input type="text" name="deadLine" required>
+        期日 <input type="date" name="deadLine" required>
         <input type="submit">
     </form>
 
