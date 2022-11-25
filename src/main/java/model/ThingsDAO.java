@@ -78,4 +78,19 @@ public class ThingsDAO {
         }
     }
 
+    public void updateToDo(String thing, String limeLimit, int id) {
+        try (Connection conn = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASS)) {
+            String sql = "UPDATE things SET thing = ?, timelimit = ? WHERE id = ?";
+            PreparedStatement pStmt = conn.prepareStatement(sql);
+            pStmt.setString(1, thing);
+            pStmt.setString(2, limeLimit);
+            pStmt.setInt(3, id);
+
+            Boolean result = pStmt.execute();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
