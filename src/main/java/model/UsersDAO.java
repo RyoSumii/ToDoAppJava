@@ -5,17 +5,14 @@ import java.sql.*;
 import java.util.Objects;
 
 public  class UsersDAO {
-//    String JDBC_URL = "jdbc:postgresql://localhost:5432/to_do_app";
-//    String DB_USER = "postgres";
-//    String DB_PASS = "password";
+    private final String JDBC_URL = "jdbc:postgresql://localhost:5432/to_do_app";
+    private final String DB_USER = "postgres";
+    private final String DB_PASS = "password";
 
     //Userのidとnameをデータベースから取得。
     //idはToDoの検索に使用。
     public Users getUserInfo(String name) {
         Users user = null;
-        String JDBC_URL = "jdbc:postgresql://localhost:5432/to_do_app";
-        String DB_USER = "postgres";
-        String DB_PASS = "password";
 
         try (Connection conn = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASS)) {
             String sql = "SELECT id, name FROM users WHERE name = ?";
@@ -41,9 +38,6 @@ public  class UsersDAO {
     }
 
     public void createUser(String name) {
-        String JDBC_URL = "jdbc:postgresql://localhost:5432/to_do_app";
-        String DB_USER = "postgres";
-        String DB_PASS = "password";
         try (Connection conn = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASS)) {
             String sql = "INSERT INTO users (name) VALUES (?)";
             PreparedStatement pStmt = conn.prepareStatement(sql);
